@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    /* CSS styles omitted for brevity */
+  </style>
+</head>
+<body bgcolor="black">
+<div id="score">Score: 0</div>
+<div id="high-score">High Score: 0</div>
+<div id="game-board"></div>
+
+<h1 class="glow" align="center">SNAKE GAME</h1>
+
+<br>
+<p align="right" color="red">Rakesh</p>
+
+<audio id="background-music" loop>
+  <source src="bgm.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
+<audio id="snake-eat-sound">
+  <source src="snakeeat.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
+<audio id="game-over-sound">
+  <source src="gameover.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
+<script>
+  (function() {
+    const Game = {
+      canvasSize: 20,
+      direction: "right",
+      snake: [
+        { x: 2, y: 0 },
+        { x: 1, y: 0 },
+        { x: 0, y: 0 }
+      ],
+      food: { x: 5, y: 5 },
+      score: 0,
+      highScore: 0,
+      gameInterval: null,
+
+      // Initialize the game
+      init() {
+        this.bindEventListeners();
+        this.startGame();
+        this.loadHighScore();
+        this.playBackgroundMusic();
+      },
+
+      // Bind event listeners for keyboard and touch input
+      bindEventListeners() {
+        document.addEventListener("keydown", this.handleKeyDown.bind(this));
+        document.addEventListener("touchstart", this.handleTouchStart.bind(this), false);
+        document.addEventListener("touchend", this.handleTouchEnd.bind(this), false);
+      },
+
+      // Start the game loop
+      startGame() {
+        this.gameInterval = setInterval(this.updateGame.bind(this), 200);
+      },
+
+      // Stop the game loop
+      stopGame() {
+        clearInterval(this.gameInterval);
+      },
+
+      // Handle keyboard input
+      handleKeyDown(event) {
+        // Code omitted for brevity
+      },
+
+      // Handle touch input
+      handleTouchStart(event) {
+        // Code omitted for brevity
+      },
+
+      handleTouchEnd(event) {
+        // Code omitted for brevity
+      },
+
+      // Draw the game board
+      drawGame() {
+        // Code omitted for brevity
+      },
+
+      // Update the game state
+      updateGame() {
+        // Code omitted for brevity
+      },
+
+      // Check if the snake collided with itself
+      checkCollision(head) {
+        // Code omitted for brevity
+      },
+
+      // Update the score display
+      updateScore() {
+        // Code omitted for brevity
+      },
+
+      // Update the high score display
+      updateHighScore() {
+        // Code omitted for brevity
+      },
+
+      // Load the high score from local storage
+      loadHighScore() {
+        // Code omitted for brevity
+      },
+
+      // Play background music
+      playBackgroundMusic() {
+        const backgroundMusic = document.getElementById("background-music");
+        backgroundMusic.play();
+      },
+
+      // Play snake eating sound
+      playSnakeEatSound() {
+        const snakeEatSound = document.getElementById("snake-eat-sound");
+        snakeEatSound.currentTime = 0;
+        snakeEatSound.play();
+      },
+
+      // Play game over sound
+      playGameOverSound() {
+        const gameOverSound = document.getElementById("game-over-sound");
+        gameOverSound.currentTime = 0;
+        gameOverSound.play();
+      },
+
+      // Handle the game over state
+      gameOver() {
+        this.stopGame();
+        this.playGameOverSound();
+        setTimeout(() => {
+          alert("Game over! Your score: " + this.score);
+          // Implement additional logic for restarting the game if desired
+        }, 500); // Delay the alert to allow the game over sound to play
+      }
+    };
+
+    // Start the game
+    Game.init();
+  })();
+</script>
+</body>
+</html>
